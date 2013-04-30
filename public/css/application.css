@@ -31,22 +31,26 @@ th {
   position: fixed;
   top: 40px;
   left: 600px;
-  font-size: 32px;
+  font-size: 22px;
   background-color: red;
   border-radius: 10px;
   width: 400px;
   padding: 10px;
   color: #fff;
+  border: 2px solid black;
+  box-shadow: 5px 5px 5px black;
 }
 
 #p2 {
   position: fixed;
-  top: 140px;
+  top: 120px;
   left: 600px;
-  font-size: 32px;
+  font-size: 22px;
   background-color: blue;
   border-radius: 10px;
   width: 400px;
   padding: 10px;
   color: #fff;
+  border: 2px solid black;
+  box-shadow: 5px 5px 5px black;
 }

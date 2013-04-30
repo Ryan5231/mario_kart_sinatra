@@ -7,13 +7,7 @@ $(document).ready(function() {
     dataType: 'json',
     url: '/',
     data: {'p1_username' : p1_username, 'p2_username' : p2_username} 
-  }).done(function(response) {
-      if (response === 'true') {
-
-      }
-      // alert(response);
-    }).fail(function(a, b, c) {
-      // alert("Game is broken.");
+  }).fail(function(jqXHR, textStatus, errorThrown) {
       window.location = "/outoforder";
     });
 
@@ -24,12 +18,15 @@ $(document).ready(function() {
     var position1 = 1;
     var position2 = 1;
     var length_of_track = 20;
+    var winner = "";
 
     $(document).on('keyup', function(e) {
       // Detect which key was pressed and call the appropriate function
       // Google "jquery keyup what key was pressed" if you don't know how
       if (e.keyCode==13){
         start = true;
+        var current_date = new Date;
+        start_time = current_date.getTime();
       }
 
       if (e.keyCode==32) {
@@ -52,8 +49,20 @@ $(document).ready(function() {
           active.next().addClass('active');
           ++position1;
           if (position1 == length_of_track) {
+            winner = p1_username;
             start = false;
-            alert("Mario wins!");
+            var current_date = new Date;
+            end_time = current_date.getTime();
+            gametime = ((end_time-start_time)/1000);
+            alert("Mario, the muthafucking, Italiano wins in " + gametime +  " seconds");
+            $.ajax({
+              type: 'post',
+              dataType: 'json',
+              url: '/winner',
+              data: {'winner' : winner} 
+            }).fail(function(jqXHR, textStatus, errorThrown) {
+              window.location = "/outoforder";
+            });
           }
         }
         if (e.keyCode==83){
@@ -62,8 +71,20 @@ $(document).ready(function() {
           active.next().addClass('active');
           ++position2;
           if (position2 == length_of_track) {
-            alert("Sonic, the muthafucking, HedgeHog wins!");
+            winner = p2_username;
             start = false;
+            var current_date = new Date;
+            end_time = current_date.getTime();
+            gametime = ((end_time-start_time)/1000);
+            alert("Sonic, the muthafucking, HedgeHog wins in " + gametime +  " seconds");
+            $.ajax({
+              type: 'post',
+              dataType: 'json',
+              url: '/winner',
+              data: {'winner' : winner} 
+            }).fail(function(jqXHR, textStatus, errorThrown) {
+              window.location = "/outoforder";
+            });
           }
         }
       }
