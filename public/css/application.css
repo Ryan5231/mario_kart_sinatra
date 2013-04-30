@@ -1,9 +1,52 @@
-.container {
-  margin: 20px auto;
-  width: 600px;
-  padding: 0px 20px 20px 20px;
-  border: 1px dotted black;
+body {
+  padding: 50px;
 }
+
 th {
   text-align: left;
+}
+
+.racer_table td {
+  background-color: yellow;
+  height: 50px;
+  width: 50px;
+  margin: 5px;
+  border: 1px solid black;
+}
+
+.racer_table td.active {
+  /*border: 1px solid black;*/
+}
+
+#player1_strip .active {
+  background-image:url('/mario.jpeg');
+}
+
+#player2_strip .active {
+  background-color: white;
+  background-image:url('/sonic.gif');
+}
+
+#p1 {
+  position: fixed;
+  top: 40px;
+  left: 600px;
+  font-size: 32px;
+  background-color: red;
+  border-radius: 10px;
+  width: 400px;
+  padding: 10px;
+  color: #fff;
+}
+
+#p2 {
+  position: fixed;
+  top: 140px;
+  left: 600px;
+  font-size: 32px;
+  background-color: blue;
+  border-radius: 10px;
+  width: 400px;
+  padding: 10px;
+  color: #fff;
 }
