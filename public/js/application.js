@@ -1,7 +1,16 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+  p1_username = prompt("What is your username?");
+  p2_username = prompt("What is your username?");
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+  $.ajax({
+    type: 'post',
+    dataType: 'json',
+    url: '/',
+    data: {'p1_username' : p1_username, 'p2_username' : p2_username} 
+  }).done(function(response) {
+      alert(response);
+    }).fail(function(a, b, c) {
+      alert("Game is broken.");
+    });
+
 });
